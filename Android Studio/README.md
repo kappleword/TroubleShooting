@@ -1,3 +1,8 @@
+![image](https://github.com/kappleword/TroubleShooting/blob/main/img/21.09.30%20spinner%20%EC%9D%B4%EB%B2%A4%ED%8A%B8%20%EC%97%90%EB%9F%AC.PNG?raw=true)
++ 문제 : Spinner 항목 선택 시 숨겨둔 텍스트 박스가 보이게끔 만들었는데 해당 페이지 이동 시 앱이 죽었다 
++ 원인 : Spinner에 맞지 않는 `setOnClickListener`를 사용해서 발생한 듯 
++ 해결 : `setOnClickListener`을 `setOnItemSelectedListener`으로 변경해서 만드니 제대로 동작
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 ![image](https://user-images.githubusercontent.com/45361543/131081906-291cd5f2-967f-40c1-a2d5-439e89d8e11d.png)
 + 문제 : 액티비티 내부 프래그먼트 화면 전환 부분 작성 중 `return inflater.inflate(R.layout.fragment_unused_surveyor_add, container, false);` 구문에서 에러 발생해서 화면 이동 x
 + 원인 : AppCompat은 예전소스라 parent에서 충돌이 일어 났거나 필요 SDK가 없어서 호환이 안된 것일 수도 있음
