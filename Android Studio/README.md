@@ -1,3 +1,9 @@
+![image](https://github.com/kappleword/TroubleShooting/blob/main/img/21.10.08%20setText%20%EC%97%90%EB%9F%AC.png?raw=true)
++ 문제 : 상세페이지로 이동 시 Resources$NotFoundException 에러 발생 후 앱이 죽음 
++ 원인 : setText(int)를 호출하면 해당하는 숫자의 리소스를 찾게 되게 됩니다. 이 해당하는 리소스가 없기때문에 익셉션이 발생한다
++ 해결 : setText(myInt) 와 같이 소스구성이 되어있다면 setText(Integer.toString(myInt)) 로 변경하시면 해결
++ 출처 : https://m.blog.naver.com/kkson50/221081639597
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 ![image](https://github.com/kappleword/TroubleShooting/blob/main/img/21.09.30%20spinner%20%EC%9D%B4%EB%B2%A4%ED%8A%B8%20%EC%97%90%EB%9F%AC.PNG?raw=true)
 + 문제 : Spinner 항목 선택 시 숨겨둔 텍스트 박스가 보이게끔 만들었는데 해당 페이지 이동 시 앱이 죽었다 
 + 원인 : Spinner에 맞지 않는 `setOnClickListener`를 사용해서 발생한 듯 
