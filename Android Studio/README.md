@@ -1,3 +1,23 @@
+![image](https://github.com/kappleword/TroubleShooting/blob/main/img/21.10.16%20Fragment%20already%20added%20%EC%97%90%EB%9F%AC.PNG?raw=true
+)
++ 문제 : 저장 후 onFragmentChange로 화면 이동 시 Fragment already added 에러 발생 
++ 원인 : 안드로이드 앱에서 동일한 프래그먼트 객체로 beginTransaction.add() 메소드를 2번째 호출 시 아래와 같은 오류가 발생하는 듯
++ 해결 : 프래그먼트가 추가되어 있으면 삭제 후 새롭게 생성해서 해결
+```java
+            //모든 프래그먼트 초기화
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+            //프래그먼트가 이미 추가되있으면 삭제 후 새로운 프래그먼트를 생성한다
+            if(resourceSurveyListFragment.isAdded()){
+                getSupportFragmentManager().beginTransaction().remove(resourceSurveyListFragment);
+                resourceSurveyListFragment = new ResourceSurveyListFragment();
+            }
+
+            resourceSurveyListFragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.resourceSurveyContainer, resourceSurveyListFragment,      ResourceSurveyListFragment.TAG).addToBackStack(null).commit();
+
+```
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 ![image](https://github.com/kappleword/TroubleShooting/blob/main/img/21.10.08%20setText%20%EC%97%90%EB%9F%AC.png?raw=true)
 + 문제 : 상세페이지로 이동 시 Resources$NotFoundException 에러 발생 후 앱이 죽음 
 + 원인 : setText(int)를 호출하면 해당하는 숫자의 리소스를 찾게 되게 됩니다. 이 해당하는 리소스가 없기때문에 익셉션이 발생한다
