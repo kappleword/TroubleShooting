@@ -1,3 +1,8 @@
+![image](https://github.com/kappleword/TroubleShooting/blob/main/img/22.04.25%20%EB%A6%AC%EC%82%AC%EC%9D%B4%ED%81%B4%EB%9F%AC%EB%B7%B0%20SparseBooleanArray%20%EC%A0%91%EA%B3%A0%ED%8E%BC%EC%B9%98%EA%B8%B0%20%EC%97%90%EB%9F%AC.jpg?raw=true)
++ 문제 : 리사이클러뷰를 SparseBooleanArray를 사용해서 접고 펼치기 가능하게 만들었는데 2번 항목이 펼쳐진 상태에서 1번 항목을 펼치면 1번 항목 내용이 정상 출력X
++ 원인 : 1번 항목의 리사이클러뷰를 전역변수로 선언해서 항목 변경할 때 초기화되고 no attached가 나온 듯
++ 해결 : 어댑터 선언할 때 `planList_recyclerView = holder.itemView.findViewById(R.id.rv_list_plan);` 추가해서 해결
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 ![image](https://github.com/kappleword/TroubleShooting/blob/main/img/21.10.16%20Fragment%20already%20added%20%EC%97%90%EB%9F%AC.PNG?raw=true
 )
 + 문제 : 저장 후 onFragmentChange로 화면 이동 시 Fragment already added 에러 발생 
